@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  .header {
+    margin-top: 160px;
+    margin-bottom: 50px;
+    &Tag,
+    .tagAll {
+      line-height: 30px;
+      margin: 0 8px;
+      padding: 0 10px 0 12px;
+      font-size: 16px;
+      display: inline-block;
+      border-radius: 10px;
+      background-color: rgb(164, 180, 228);
+      text-align: center;
+      transition: all 0.4s ease;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      &.chosen {
+        box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px,
+          rgba(0, 0, 0, 0.239216) 0 1px 4px;
+        background-color: #0085a1 !important;
+      }
+    }
+    .tagAll {
+      background-color: #f3f5f5;
+      font-weight: 700;
+      color: #0085a1;
+      &.chosen {
+        box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px,
+          rgba(0, 0, 0, 0.239216) 0 1px 4px;
+        background-color: #e4e4e4 !important;
+      }
+    }
+  }
+  h1.nowTag {
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 1.7;
+    font: normal normal normal 21px/1 FontAwesome;
+    color: #0085a1;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  .articlesBody {
+    cursor: pointer;
+    padding-bottom: 200px;
+    .articleItem {
+      &:hover {
+        h2,
+        p {
+          color: #0085a1;
+        }
+      }
+      hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #eee;
+      }
+    }
+  }
+}
