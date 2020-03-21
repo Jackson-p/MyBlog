@@ -1,6 +1,9 @@
 import axios from "axios";
 const mockData = require("@/mock/gitData.json");
 
+// 为了美观一页6个
+const PAGE_SIZE = 6;
+
 /**
  * @description: 去github issue中把所需要的issue集合拿下来
  * @param {string} label
@@ -11,9 +14,9 @@ const mockData = require("@/mock/gitData.json");
  */
 const getIssues = async (
   label: string,
-  currentPage: number,
-  pageSize: number,
-  keyWord: string
+  currentPage: number = 1,
+  pageSize: number = PAGE_SIZE,
+  keyWord: string = ""
 ) => {
   if (label && label.trim().length > 0) {
     label = `+label:${label}`;

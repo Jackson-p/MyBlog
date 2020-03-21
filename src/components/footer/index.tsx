@@ -5,7 +5,7 @@ const Footer: FC = () => (
   <div className={style.footer}>
     <div className={style.footerMes}>
       <h1>Web Developer</h1>
-      <p>Copyright©2018Jackson. All Rights Reserved.</p>
+      <p>Copyright©2020Jackson. All Rights Reserved.</p>
     </div>
   </div>
 );
