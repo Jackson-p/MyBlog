@@ -11,8 +11,8 @@ const About: FC = () => (
       <Col offset={2}>
         <span>Coder</span>
         <span>
-          Love Movie &nbsp; | &nbsp; Love Books &nbsp; | &nbsp; Love Play &nbsp;
-          | &nbsp; Love Myself
+          Frontend &nbsp; | &nbsp; Web &nbsp; | &nbsp; AI &nbsp; | &nbsp;
+          Backend
         </span>
         <span>Life</span>
         <span>

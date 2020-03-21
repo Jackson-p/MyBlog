@@ -31,6 +31,25 @@ const getIssues = async (
   return issues;
 };
 
+/**
+ * @description: 获取单个issue的内容和评论
+ * @param {number} number -指定issue的下标
+ * @return: issue
+ */
+
+const getSingleIssue = async (number: number) => {
+  const url = `https://api.github.com/repos/Jackson-p/Jackson-p.github.io/issues`;
+  // const [content, comment] = await Promise.all([
+  //   axios.get(`${url}/${number}`).then(res => res.data.body || ""),
+  //   axios.get(`${url}/${number}/comments`).then(res => res.data || [])
+  // ]);
+
+  // mock数据
+  const { singleIssue } = mockData;
+  const { content, comment } = singleIssue;
+  return [content, comment];
+};
+
 const getLabels = async () => {
   const url = encodeURI(
     "https://api.github.com/repos/Jackson-p/Jackson-p.github.io/labels"
@@ -42,4 +61,4 @@ const getLabels = async () => {
   return labels;
 };
 
-export { getIssues, getLabels };
+export { getLabels, getIssues, getSingleIssue };

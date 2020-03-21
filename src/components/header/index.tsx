@@ -6,10 +6,11 @@ import style from "./index.less";
 const avatur = require("@/static/img/head.jpg");
 
 const Header: FC = (props: any) => {
-  const {
+  let {
     location: { pathname }
   } = props;
-
+  // 考虑到情况比较简单，这里没必要写正则了
+  pathname = (pathname.indexOf("Articles") > 0 && "/Articles") || pathname;
   const backColorStyle = {
     backgroundColor: (pathname === "/" && "currentColor") || "#FFFFFF"
   };

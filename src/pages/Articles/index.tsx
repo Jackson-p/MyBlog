@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 import { Row, Col, Pagination, Spin } from "antd";
+import { history } from "umi";
 import Layout from "@/layout";
 import Footer from "@/components/footer";
 
@@ -38,6 +39,7 @@ const Articles: FC = () => {
     getArticles();
   }, [chosenTag, page]);
 
+  const gotoArticle = (id: number) => history.push(`/Articles/${id}`);
   return (
     <Layout>
       <Spin spinning={loading} size="large">
@@ -77,7 +79,12 @@ const Articles: FC = () => {
           </Row>
           <Row justify="center" className={style.articlesBody}>
             {articles.map(val => (
-              <Col className={style.articleItem} span={13} key={val.title}>
+              <Col
+                className={style.articleItem}
+                span={13}
+                key={val.title}
+                onClick={() => gotoArticle}
+              >
                 <h2>{val.title}</h2>
                 <p>{val.body.substring(0, 500) + "..."}</p>
                 <hr />
