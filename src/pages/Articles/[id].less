@@ -1,7 +1,9 @@
 .container {
+  position: relative;
   width: 100%;
   min-height: 100vh;
   padding-top: 120px;
+  padding-bottom: 200px;
   .header {
     a {
       color: #404040;
@@ -40,7 +42,99 @@
       border-top: 1px solid #eee;
     }
   }
-  pre {
-    background-color: ghostwhite;
+  .main {
+    pre {
+      background-color: ghostwhite;
+    }
+  }
+  .comment {
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    .reviewTitle {
+      margin-top: 20px;
+      border: 2px solid #959595;
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+      padding: 6px 0px;
+      width: 100px;
+      text-align: center;
+      position: relative;
+      background-color: #fff;
+      z-index: -2;
+      h3 {
+        color: #959595;
+        margin: 24px auto 16px auto;
+      }
+    }
+    .reviewHr {
+      width: 100%;
+      border-bottom: 2px solid #959595;
+      position: relative;
+      z-index: -3;
+      top: -2px;
+    }
+    .reviewSubtitle {
+      float: left;
+      color: #959595;
+      font-size: 16px;
+      margin-top: 14px;
+      margin-left: 15px;
+      &::before {
+        content: "";
+        display: block;
+        width: 8px;
+        background: #959595;
+        height: 35px;
+        float: left;
+        margin: -4px 10px 0 -18px;
+        border-radius: 15%;
+      }
+    }
+    .reviewItem {
+      width: 100%;
+      float: left;
+      clear: both;
+      padding-left: 20px;
+      border-bottom: 1px dashed #d3d3d3;
+      h3 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+      }
+      p {
+        display: inline-block;
+        margin-top: 0;
+        margin-bottom: 1em;
+      }
+      i {
+        float: right;
+      }
+    }
+    .comeToReview {
+      float: left;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+      color: #959595;
+    }
+    .contentBlock {
+      padding-top: 20px;
+      clear: both;
+      height: 50px;
+      text-align: center;
+      button {
+        width: 100px;
+        line-height: 20px;
+        margin: 10px auto 20px auto;
+        background-color: cornflowerblue;
+        color: #fff;
+        padding: 5px;
+        border: 0.5px solid deepskyblue;
+        cursor: pointer;
+      }
+    }
   }
 }

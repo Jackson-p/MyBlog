@@ -9,9 +9,15 @@ import style from "./index.less";
 import { getLabels, getIssues } from "@/utils";
 
 const Articles: FC = () => {
+  // 这里是一个有关hook的标志思考，set几次就会重新渲染几次
+  // console.log(1);
+  const {
+    location: { state }
+  } = history;
+  const defaultTag = (state && (state as any).chosenTag) || "ALL";
   const [loading, setLoading] = useState<boolean>(false);
   const [labels, setLabels] = useState<Array<string>>([]);
-  const [chosenTag, setTag] = useState<string>("ALL");
+  const [chosenTag, setTag] = useState<string>(defaultTag);
   const [articles, setArticles] = useState<Array<any>>([]);
   const [itemTotal, setItemTotal] = useState<number>(0);
   const [page, setPage] = useState<number>(1);
@@ -83,7 +89,7 @@ const Articles: FC = () => {
                 className={style.articleItem}
                 span={13}
                 key={val.title}
-                onClick={() => gotoArticle}
+                onClick={() => gotoArticle(val.number)}
               >
                 <h2>{val.title}</h2>
                 <p>{val.body.substring(0, 500) + "..."}</p>
