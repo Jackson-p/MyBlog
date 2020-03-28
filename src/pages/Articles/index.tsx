@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import { Row, Col, Pagination, Spin } from "antd";
+import { Row, Col, Pagination, Spin, message } from "antd";
 import { history } from "umi";
 import Layout from "@/layout";
 import Footer from "@/components/footer";
@@ -7,6 +7,11 @@ import Footer from "@/components/footer";
 import style from "./index.less";
 
 import { getLabels, getIssues } from "@/utils";
+
+const goToIssue = () => {
+  message.warning("git api 被限制, 将打开issue地址");
+  window.open("https://github.com/Jackson-p/Jackson-p.github.io/issues");
+};
 
 const Articles: FC = () => {
   // 这里是一个有关hook的标志思考，set几次就会重新渲染几次
@@ -24,7 +29,8 @@ const Articles: FC = () => {
   const getArticles = async () => {
     const tag = (chosenTag !== "ALL" && chosenTag) || "";
     setLoading(true);
-    const issues = await getIssues(tag, page);
+    const issues =
+      (await getIssues(tag, page).catch(e => e && goToIssue())) || [];
     setLoading(false);
     const { total_count } = issues;
     issues.length === 0 && setTag("issue api 被封禁， 请稍后再试");
@@ -33,7 +39,7 @@ const Articles: FC = () => {
   };
   const fetchLabels = async () => {
     setLoading(true);
-    const res = await getLabels();
+    const res = (await getLabels().catch(e => e && goToIssue())) || [];
     setLoading(false);
     setLabels(res.map((val: any) => val.name));
   };
@@ -104,7 +110,7 @@ const Articles: FC = () => {
                   total={itemTotal}
                   onChange={pageNum => setPage(pageNum)}
                 />
-              )) || <></>}
+              )) || <div></div>}
             </Col>
           </Row>
         </div>
