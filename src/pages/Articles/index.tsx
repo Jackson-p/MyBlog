@@ -99,12 +99,12 @@ const Articles: FC = () => {
               </Col>
             ))}
             <Col className={style.articlePagination} span={13}>
-              {itemTotal && itemTotal > 0 && (
+              {(itemTotal && itemTotal > 0 && (
                 <Pagination
                   total={itemTotal}
                   onChange={pageNum => setPage(pageNum)}
                 />
-              )}
+              )) || <></>}
             </Col>
           </Row>
         </div>
