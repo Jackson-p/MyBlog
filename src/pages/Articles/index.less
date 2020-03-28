@@ -2,6 +2,7 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
+  overflow: hidden;
   .header {
     margin-top: 160px;
     margin-bottom: 50px;
@@ -64,6 +65,19 @@
     .articlePagination {
       margin-top: 40px;
       text-align: center;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 30px;
+  }
+  .articleItem p {
+    overflow-x: scroll;
+  }
+  .articlePagination {
+    li {
+      margin-bottom: 10px;
     }
   }
 }

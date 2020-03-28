@@ -36,6 +36,18 @@ const Header: FC = (props: any) => {
           </Link>
         ))}
       </Col>
+      <div className={style.resNav}>
+        <input
+          type="checkbox"
+          id={style.checkbox}
+          style={{ display: "none" }}
+        />
+        <label className={style.respmenu} htmlFor={style.checkbox}>
+          <span className={style.respIcon}></span>
+          <span className={style.respIcon}></span>
+          <span className={style.respIcon}></span>
+        </label>
+      </div>
     </Row>
   );
 };

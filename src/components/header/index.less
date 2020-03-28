@@ -44,4 +44,46 @@
       }
     }
   }
+  .resNav {
+    display: none;
+    .respmenu {
+      display: block;
+      width: 56px;
+      height: 53px;
+      padding: 11px 0;
+      .respIcon {
+        height: 3px;
+        background-color: #000;
+        display: block;
+        width: 35px;
+        margin: 0 0 11px 5px;
+      }
+    }
+  }
+
+  /* 以下尝试用纯CSS+媒体查询实现响应式导航栏 */
+  @media screen and (max-width: 768px) {
+    .nav {
+      display: none;
+      margin-right: 0;
+      margin-top: 6px;
+      position: relative;
+    }
+    .resNav {
+      display: block;
+      // float: right;
+      margin-right: 10px;
+    }
+    // #checkbox:checked ~ .nav {
+    //   display: block;
+    //   box-shadow: 0 0 5px #333333;
+    //   padding-left: 0px;
+    //   float: right;
+    //   clear: both;
+    //   background-color: #fff;
+    // }
+    input:checked body {
+      background: red;
+    }
+  }
 }

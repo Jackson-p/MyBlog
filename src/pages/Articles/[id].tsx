@@ -63,7 +63,12 @@ const Article: FC = () => {
     <Layout>
       <div className={style.container}>
         <Row justify="start">
-          <Col span={16} offset={4} className={style.header}>
+          <Col
+            md={{ span: 16, offset: 4 }}
+            span={22}
+            offset={1}
+            className={style.header}
+          >
             <Link to={{ pathname: "/Articles", state: { chosenTag: tag } }}>
               {tag}
             </Link>
@@ -72,14 +77,20 @@ const Article: FC = () => {
             <hr />
           </Col>
           <Col
-            span={16}
-            offset={4}
+            md={{ span: 16, offset: 4 }}
+            span={22}
+            offset={1}
             className={style.main}
             dangerouslySetInnerHTML={{ __html: content }}
           ></Col>
         </Row>
         <Row justify="start">
-          <Col span={16} offset={4} className={style.comment}>
+          <Col
+            md={{ span: 16, offset: 4 }}
+            span={22}
+            offset={1}
+            className={style.comment}
+          >
             <div className={style.reviewTitle}>
               <h3>评论</h3>
             </div>

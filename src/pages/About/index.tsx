@@ -30,7 +30,9 @@ const About: FC = () => (
         </div>
       </Col>
     </Row>
-    <Footer />
+    <Row className={style.footer}>
+      <Footer />
+    </Row>
   </Layout>
 );
 

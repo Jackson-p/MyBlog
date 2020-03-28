@@ -13,9 +13,20 @@ export default () => {
         <div className={style.introBox}>
           <h1>What && how to do</h1>
           <div className={style.imgList}>
-            <img src={weibo} />
-            <img src={gitt} />
-            <img src={zhihu} />
+            <img
+              src={weibo}
+              onClick={() => window.open("https://weibo.com/u/6046299335")}
+            />
+            <img
+              src={gitt}
+              onClick={() => window.open("https://www.github.com/Jackson-p")}
+            />
+            <img
+              src={zhihu}
+              onClick={() =>
+                window.open("https://www.zhihu.com/people/jackson-39-76")
+              }
+            />
           </div>
         </div>
       </div>

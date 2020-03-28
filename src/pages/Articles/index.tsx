@@ -51,7 +51,7 @@ const Articles: FC = () => {
       <Spin spinning={loading} size="large">
         <div className={style.container}>
           <Row justify="center" align="middle" className={style.header}>
-            <Col span={12}>
+            <Col md={{ span: 12, offset: 0 }} span={24} offset={0}>
               {labels.length > 0 && (
                 <div
                   key="ALL"
@@ -79,7 +79,7 @@ const Articles: FC = () => {
             </Col>
           </Row>
           <Row justify="center">
-            <Col span={13}>
+            <Col md={{ span: 13 }} span={24}>
               <h1 className={style.nowTag}>{chosenTag}</h1>
             </Col>
           </Row>
@@ -87,7 +87,8 @@ const Articles: FC = () => {
             {articles.map(val => (
               <Col
                 className={style.articleItem}
-                span={13}
+                md={{ span: 13 }}
+                span={24}
                 key={val.title}
                 onClick={() => gotoArticle(val.number)}
               >
@@ -105,8 +106,8 @@ const Articles: FC = () => {
               )}
             </Col>
           </Row>
-          <Footer />
         </div>
+        <Footer />
       </Spin>
     </Layout>
   );
