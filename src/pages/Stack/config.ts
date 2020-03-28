@@ -8,18 +8,18 @@ const stackData: any = {
     语言规范: ["MDN", "TypeScript", "Eslint", "Prettier"]
   },
   后端: {
-    语言: ["node", "java"],
+    语言: ["Node", "Java"],
     框架: ["Koa", "Egg && Midway", "Nest", "Express"]
   },
   多端: {
-    移动端: ["flutter"],
+    移动端: ["Flutter"],
     桌面端: ["Electron"]
   },
   运维: {
-    部署: ["物理机", "docker云主机", "Serverless"],
-    运行: ["pm2"],
+    部署: ["物理机", "Docker云主机", "Serverless"],
+    运行: ["Pm2"],
     监控: ["Grafana"],
-    日志: ["log4js等", "Kafka", "Kibana"],
+    日志: ["Log4js等", "Kafka", "Kibana"],
     埋点: ["数据指标", "性能指标"]
   },
   测试: {

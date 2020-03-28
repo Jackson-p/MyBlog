@@ -21,7 +21,12 @@ const Header: FC = (props: any) => {
       justify="space-between"
       style={backColorStyle}
     >
-      <Col className={style.user} span={4} offset={2}>
+      <Col
+        className={style.user}
+        md={{ span: 4, offset: 2 }}
+        span={4}
+        offset={0}
+      >
         <img src={avatur} />
         <h1>Jackson</h1>
       </Col>
@@ -42,6 +47,17 @@ const Header: FC = (props: any) => {
           id={style.checkbox}
           style={{ display: "none" }}
         />
+        <ul className={style.resList}>
+          {["/", "/Articles", "/Stack", "/About"].map(val => (
+            <Link
+              to={val}
+              className={(val === pathname && style.chosen) || ""}
+              key={val}
+            >
+              {(val === "/" && "Home") || val.slice(1)}
+            </Link>
+          ))}
+        </ul>
         <label className={style.respmenu} htmlFor={style.checkbox}>
           <span className={style.respIcon}></span>
           <span className={style.respIcon}></span>

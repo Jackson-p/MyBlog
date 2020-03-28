@@ -3,7 +3,7 @@ const mockData = require("@/mock/gitData.json");
 
 // 为了美观一页6个
 const PAGE_SIZE = 6;
-const mock = true; // 是否开启mock模式
+const mock = false; // 是否开启mock模式
 
 /**
  * @description: 去github issue中把所需要的issue集合拿下来
