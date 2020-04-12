@@ -4,6 +4,7 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 export default defineConfig({
   title: "Jackson",
   base: "/",
+  history: { type: "hash" },
   chainWebpack(memo) {
     memo.plugin("workbox").use(WorkboxPlugin.GenerateSW, [
       { swDest: "sw.js" },

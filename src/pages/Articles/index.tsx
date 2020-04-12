@@ -10,7 +10,11 @@ import { getLabels, getIssues } from "@/utils";
 
 const goToIssue = () => {
   message.warning("git api 被限制, 将打开issue地址");
-  window.open("https://github.com/Jackson-p/Jackson-p.github.io/issues");
+  setTimeout(
+    () =>
+      window.open("https://github.com/Jackson-p/Jackson-p.github.io/issues"),
+    4000
+  );
 };
 
 const Articles: FC = () => {
@@ -34,7 +38,7 @@ const Articles: FC = () => {
     setLoading(false);
     const { total_count } = issues;
     issues.length === 0 && setTag("issue api 被封禁， 请稍后再试");
-    setArticles(issues.items);
+    setArticles(issues.items || []);
     setItemTotal(total_count);
   };
   const fetchLabels = async () => {
@@ -108,6 +112,7 @@ const Articles: FC = () => {
               {(itemTotal && itemTotal > 0 && (
                 <Pagination
                   total={itemTotal}
+                  defaultPageSize={6}
                   onChange={pageNum => setPage(pageNum)}
                 />
               )) || <div></div>}
