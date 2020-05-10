@@ -5,6 +5,7 @@ export default defineConfig({
   title: "Jackson",
   base: "/",
   history: { type: "hash" },
+  hash: true,
   chainWebpack(memo) {
     memo.plugin("workbox").use(WorkboxPlugin.GenerateSW, [
       { swDest: "sw.js" },
