@@ -34,7 +34,7 @@ const Stack: FC = () => {
     const cardList = [];
     for (let point in stackData[area]) {
       const singeCard = (
-        <Card title={point} className={style.singleCard}>
+        <Card title={point} className={style.singleCard} key={point}>
           {stackData[area][point].map((val: string) => (
             <p key={val}>
               <span style={{ backgroundColor: getRandomColor() }}>
@@ -52,16 +52,13 @@ const Stack: FC = () => {
         {cardTitle}
         <hr />
         <Row align="top" justify="start" gutter={12}>
-          {cardList.map((val, index) => (
-            <Col
-              key={`${cardTitle}${index}`}
-              md={{ span: 6 }}
-              span={24}
-              flex="wrap"
-            >
-              {val}
-            </Col>
-          ))}
+          <Col
+            span={24}
+            flex="wrap"
+            className={style.singleCol}
+          >
+            {cardList}
+          </Col>
         </Row>
       </>
     );

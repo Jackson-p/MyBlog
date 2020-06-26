@@ -1,9 +1,31 @@
 import axios from "axios";
+import { message } from "antd";
 const mockData = require("@/mock/gitData.json");
 
 // 为了美观一页6个
 const PAGE_SIZE = 6;
 const mock = false; // 是否开启mock模式
+
+let apiWrong = 0; // 判断当前git api报了几次错
+
+axios.interceptors.response.use(
+  (res) => {
+    apiWrong = 0;
+    return res;
+  },
+  (err) => {
+    if (err && apiWrong >= 1) {
+      return;
+    }
+    message.warning("git api 被限制, 将打开issue地址");
+    apiWrong++;
+    setTimeout(
+      () =>
+        window.open("https://github.com/Jackson-p/Jackson-p.github.io/issues"),
+      4000
+    );
+  }
+);
 
 /**
  * @description: 去github issue中把所需要的issue集合拿下来
@@ -29,7 +51,7 @@ const getIssues = async (
     const { issues } = mockData;
     return issues;
   } else {
-    const issues = await axios.get(url).then(res => res.data || {});
+    const issues = await axios.get(url).then((res) => (res && res.data) || {});
     return issues;
   }
 };
@@ -49,8 +71,10 @@ const getSingleIssue = async (number: number) => {
     return [content, comment];
   } else {
     const [content, comment] = await Promise.all([
-      axios.get(`${url}/${number}`).then(res => res.data || {}),
-      axios.get(`${url}/${number}/comments`).then(res => res.data || [])
+      axios.get(`${url}/${number}`).then((res) => res.data || {}),
+      axios
+        .get(`${url}/${number}/comments`)
+        .then((res) => (res && res.data) || []),
     ]);
     return [content, comment];
   }
@@ -64,7 +88,7 @@ const getLabels = async () => {
     const { labels } = mockData;
     return labels;
   } else {
-    const labels = await axios.get(url).then(res => res.data || {});
+    const labels = await axios.get(url).then((res) => (res && res.data) || []);
     return labels;
   }
 };
@@ -87,7 +111,7 @@ const transTime = (timel: string) => {
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
   let realtime = new Date(timel);
   let month = allmonths[realtime.getMonth()];

@@ -8,20 +8,11 @@ import style from "./index.less";
 
 import { getLabels, getIssues } from "@/utils";
 
-const goToIssue = () => {
-  message.warning("git api 被限制, 将打开issue地址");
-  setTimeout(
-    () =>
-      window.open("https://github.com/Jackson-p/Jackson-p.github.io/issues"),
-    4000
-  );
-};
-
 const Articles: FC = () => {
   // 这里是一个有关hook的标志思考，set几次就会重新渲染几次
   // console.log(1);
   const {
-    location: { state }
+    location: { state },
   } = history;
   const defaultTag = (state && (state as any).chosenTag) || "ALL";
   const [loading, setLoading] = useState<boolean>(false);
@@ -33,8 +24,7 @@ const Articles: FC = () => {
   const getArticles = async () => {
     const tag = (chosenTag !== "ALL" && chosenTag) || "";
     setLoading(true);
-    const issues =
-      (await getIssues(tag, page).catch(e => e && goToIssue())) || [];
+    const issues = (await getIssues(tag, page)) || [];
     setLoading(false);
     const { total_count } = issues;
     issues.length === 0 && setTag("issue api 被封禁， 请稍后再试");
@@ -43,7 +33,7 @@ const Articles: FC = () => {
   };
   const fetchLabels = async () => {
     setLoading(true);
-    const res = (await getLabels().catch(e => e && goToIssue())) || [];
+    const res = (await getLabels()) || [];
     setLoading(false);
     setLabels(res.map((val: any) => val.name));
   };
@@ -74,7 +64,7 @@ const Articles: FC = () => {
                   show all
                 </div>
               )}
-              {labels.map(val => (
+              {labels.map((val) => (
                 <div
                   key={val}
                   className={
@@ -94,7 +84,7 @@ const Articles: FC = () => {
             </Col>
           </Row>
           <Row justify="center" className={style.articlesBody}>
-            {articles.map(val => (
+            {articles.map((val) => (
               <Col
                 className={style.articleItem}
                 md={{ span: 13 }}
@@ -113,7 +103,7 @@ const Articles: FC = () => {
                 <Pagination
                   total={itemTotal}
                   defaultPageSize={6}
-                  onChange={pageNum => setPage(pageNum)}
+                  onChange={(pageNum) => setPage(pageNum)}
                 />
               )) || <div></div>}
             </Col>
